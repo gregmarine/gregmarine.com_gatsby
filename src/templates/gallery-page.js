@@ -10,7 +10,7 @@ import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import FullWidthImage from "../components/FullWidthImage";
 
 // eslint-disable-next-line
-export const ProductPageTemplate = ({
+export const GalleryPageTemplate = ({
   image,
   title,
   heading,
@@ -96,7 +96,7 @@ export const ProductPageTemplate = ({
   );
 };
 
-ProductPageTemplate.propTypes = {
+GalleryPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
   heading: PropTypes.string,
@@ -120,12 +120,12 @@ ProductPageTemplate.propTypes = {
   }),
 };
 
-const ProductPage = ({ data }) => {
+const GalleryPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
     <Layout>
-      <ProductPageTemplate
+      <GalleryPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
         heading={frontmatter.heading}
@@ -140,7 +140,7 @@ const ProductPage = ({ data }) => {
   );
 };
 
-ProductPage.propTypes = {
+GalleryPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
@@ -148,10 +148,10 @@ ProductPage.propTypes = {
   }),
 };
 
-export default ProductPage;
+export default GalleryPage;
 
-export const productPageQuery = graphql`
-  query ProductPage($id: String!) {
+export const galleryPageQuery = graphql`
+  query GalleryPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
